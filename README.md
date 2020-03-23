@@ -161,7 +161,7 @@ In this step we will navigate to IAM Console & create a new Glue service role, t
     * Click - **Next: Tags**
 	    * Leave as default, no changes here
     * Click - **Next: Review**
-    * Role name: **AWSGlueServiceRoleDefault**
+    * Role name: **WebinarAWSGlueServiceRole**
     * make sure that are two policies attached to this role (**AmazonS3FullAccess**, **AWSGlueServiceRole**)
     * Click - **Create role**
 
@@ -185,7 +185,7 @@ In this step, we will navigate to AWS Glue Console & create glue crawlers to dis
         * Click - **Next**
     * IAM Role
         * Choose: **Create an IAM role**
-        * Role Name: **AWSGlueServiceRoleDefault**
+        * Role Name: **WebinarAWSGlueServiceRole**
         * Click - **Next**
     * Schedule
         * Frequency: **Run on demand**
@@ -240,7 +240,7 @@ In this step you will be creating a glue endpoint to interactively develop Glue 
 * GoTo : https://console.aws.amazon.com/glue/home?region=us-east-1#etl:tab=devEndpoints
 * Click - **Add endpoint**
   * Development endpoint name - **devendpoint1**
-    * IAM role - **AWSGlueServiceRoleDefault**
+    * IAM role - **WebinarAWSGlueServiceRole**
     * Expand - **Security configuration.. parameters**
       * Data processing units (DPUs): **2** (this affects the cost of the running this lab)
   * Click - **Next**
@@ -436,7 +436,7 @@ Make sure you bring down / delete all resources created as part of this lab
 	* Delete Notebook: **aws-glue-webinar-notebook**
 * Delete IAM Role
 	* GoTo: https://console.aws.amazon.com/iam/home?region=us-east-1#/roles
-	* Search for AWSGlueServiceRoleDefault
+	* Search for WebinarAWSGlueServiceRole
 	* Delete Role: **WebinarAWSGlueServiceRole**
 * Delete S3 bucket
 	* GoTo: https://s3.console.aws.amazon.com/s3/home?region=us-east-1
