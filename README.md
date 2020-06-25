@@ -17,7 +17,7 @@ Author: Oshik Avioz | Chief Technology | Data & AI | AllCloud | [Linkedin](https
 * I recommend to **follow links from this  guide** & open them **in new a tab**
 * You can run this workshop in Microsoft Edge or Google Chrome or Firefox
 
-# Part 1: Ingest and Storage
+# Phase 1: Ingest and Store
 
 ## Create S3 Bucket
 
@@ -144,7 +144,7 @@ After few moments GoTo S3 console:https://s3.console.aws.amazon.com/s3/home?regi
 * Click - **datalake-bucket-webinar > Data**
 * There should be a folder called **raw** created > Open it and keep navigating, you will notice that firehose has dumped the data in S3 using **yyyy/mm/dd/hh** partitioning 
 
-# Part 2 : Catalog Data
+# Phase 2 : Create Data Catalog
 
 ## Create IAM Role
 
@@ -167,11 +167,7 @@ In this step we will navigate to IAM Console & create a new Glue service role, t
 
 
 
-<<<<<<< HEAD
 ## Create AWS Glue Crawlers 
-=======
-## Create AWS Glue Crawlers
->>>>>>> fa5899577a8daf4554532a650ce16fb18ec00923
 
 In this step, we will navigate to AWS Glue Console & create glue crawlers to discovery the newly ingested data in S3.
 
@@ -236,7 +232,7 @@ ORDER BY  activity_type
 ```
 
 
-# Part 3 : Transform Data
+# Phase 3 : Data Transformation
 
 ## Create Glue Development Endpoint
 In this step you will be creating a glue endpoint to interactively develop Glue ETL scripts using PySpark
@@ -300,7 +296,7 @@ console:https://s3.console.aws.amazon.com/s3/home?region=us-east-1
 * Click - **datalake-bucket-webinar > data**
 * There should be a folder called **processed-data** created here > Open it & ensure that .parquet files are created in this folder.
 
-# Part 4 : Analyze 
+# Phase 4 : Analyze Data
 
 ## Explore transformed data using Athena
 
@@ -334,7 +330,7 @@ ORDER BY  count desc
 ````
 
 
-# Part 4: Visualize
+# Part 5: Visualize Data
 
 ## Setting Up QuickSight
 In this step we will visualize it using QuickSight
