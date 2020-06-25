@@ -137,7 +137,7 @@ Once the tools send ~ 100,000 messages, you can click on - **Stop sending data t
 
 ```
 
-## Validate that data has arrived in S3
+## Make sure that the fake data ingested into S3
 
 After few moments GoTo S3 console:https://s3.console.aws.amazon.com/s3/home?region=us-east-1
 
