@@ -1,7 +1,7 @@
 # Building Serverless Data Lakes on AWS
 Author: Oshik Avioz | Chief Technology | Data & AI | AllCloud | [Linkedin](https://www.linkedin.com/in/oshikavioz/)
 
-![Architecture Diagram](./img/lab-architecture.png)
+![Architecture Diagram](./images/workshop-architecture.png)
 
 ### What you will learn from this workshop?
 * How to design serverless data lake architecture
@@ -21,11 +21,11 @@ Author: Oshik Avioz | Chief Technology | Data & AI | AllCloud | [Linkedin](https
 
 ## Create S3 Bucket
 
-In this step, we will navigate to S3 Console and create the S3 bucket used throughout this demo.
+In this step, we will create S3 bucket used throughout this workshop.
 
 Login to AWS Console: https://console.aws.amazon.com/console/home?region=us-east-1
 
-Navigate to S3 Console & Create a new bucket in us-east-1 region :
+Navigate to S3 Console and create a new bucket in us-east-1 region :
 
 * GoTo : https://s3.console.aws.amazon.com/s3/home?region=us-east-1
 * Click - **Create Bucket**
@@ -39,9 +39,9 @@ Navigate to S3 Console & Create a new bucket in us-east-1 region :
             * Click - **Save**
     * Open - **data**
         * Click - **Create folder**
-            * New folder : **reference_data**
+            * New folder : **normalize_data**
             * Click - **Save**
-    * Open - **reference_data**
+    * Open - **normalize_data**
         * download this file locally : [tracking-data.json](tracking-data.json)
         * Click - Upload
             * Click **Add files** & upload the **tracking-data.json** file here
@@ -51,7 +51,7 @@ Navigate to S3 Console & Create a new bucket in us-east-1 region :
 
 ## Create Kinesis Firehose
 
-In this step we will create navigate to Kinesis Console & create a Kinesis Firehose delivery stream to ingest data & store in S3:
+In this step we will create Kinesis Firehose delivery stream to ingest data & store in S3:
 
 * GoTo: https://console.aws.amazon.com/kinesis/home?region=us-east-1#/get-started
 * Click **Create Delivery Stream**
@@ -66,7 +66,7 @@ In this step we will create navigate to Kinesis Console & create a Kinesis Fireh
     * Step 3: Choose destination
         * Destination : **Amazon S3**
         * S3 bucket : **datalake-bucket-webinar**
-        * Prefix : **data/raw/**  (slash **/** after **raw** is important, if you miss it Firehose will copy the data in an undesired location)
+        * Prefix : **data/raw/**  (slash **/** after **raw** is important, if you miss it Firehose will copy the data in an unknown location)
         * Error prefix : Leave Blank
         * Click **Next**
     * Step 4: Configure settings
@@ -86,9 +86,9 @@ In this step we will create navigate to Kinesis Console & create a Kinesis Fireh
 
 
 
-## Generate Dummy Data
+## Generate Fake Data
 
-In this step we will configure Kinesis Data Generator to produce fake data and ingest it into Kinesis Firehose
+In this step we will configure Kinesis Data Generator to generate and produce fake data and ingest it into Kinesis Firehose
 
 * **Configure Amazon Cognito** for Kinesis Data Generator - In this step we will launch a cloud formation stack that will configure Cognito. This cloudformation scripts launches in **Oregon region** (No need to change this region)
     * Goto : https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=Kinesis-Data-Generator-Cognito-User&templateURL=https://s3-us-west-2.amazonaws.com/kinesis-helpers/cognito-setup.json
@@ -204,18 +204,18 @@ In this step, we will navigate to AWS Glue Console & create glue crawlers to dis
 
 ## Verify newly created tables in catalog
 
-Navigate to Glue Catalog & explore the crawled data:
+GoTo Glue Catalog & explore the crawled data:
 
 * GoTo : https://console.aws.amazon.com/glue/home?region=us-east-1#catalog:tab=databases 
     * Click - **workshopdb**
 * Click - **Tables in workshopdb**
     * Click - **raw**
     * Look around and explore the schema for your dataset
-        * look for the `averageRecordSize`, `recordCount`, `compressionType`
+        * Please see `averageRecordSize`, `recordCount`, `compressionType`
 
 ## Query ingested data using Amazon Athena
 
-Lets query newly ingested data using Amazon Athena
+Now we will query newly ingested data using Amazon Athena
 
 * GoTo : https://us-east-1.console.aws.amazon.com/athena/home?region=us-east-1#query
 * On the left panel (**Database**) drop down , select **workshopdb** > select table **raw**
@@ -235,14 +235,14 @@ ORDER BY  activity_type
 # Phase 3 : Data Transformation
 
 ## Create Glue Development Endpoint
-In this step you will be creating a glue endpoint to interactively develop Glue ETL scripts using PySpark
+In this step we will creating a develop Glue ETL endpoint scripts using PySpark
 
 * GoTo : https://console.aws.amazon.com/glue/home?region=us-east-1#etl:tab=devEndpoints
 * Click - **Add endpoint**
   * Development endpoint name - **devendpoint1**
     * IAM role - **WebinarAWSGlueServiceRole**
     * Expand - **Security configuration.. parameters**
-      * Data processing units (DPUs): **2** (this affects the cost of the running this lab)
+      * DPUs - Data processing units: **2** (this affects the cost of the running this workshop)
   * Click - **Next**
   * Networking screen :
     * Choose - **Skip networking information**
@@ -294,7 +294,7 @@ Once the ETL script has ran successfully.
 console:https://s3.console.aws.amazon.com/s3/home?region=us-east-1
 
 * Click - **datalake-bucket-webinar > data**
-* There should be a folder called **processed-data** created here > Open it & ensure that .parquet files are created in this folder.
+* There should be a folder called **aggregated-data** created here > Open it & ensure that .parquet files are created in this folder.
 
 # Phase 4 : Analyze Data
 
@@ -333,16 +333,16 @@ ORDER BY  count desc
 # Part 5: Visualize Data
 
 ## Setting Up QuickSight
-In this step we will visualize it using QuickSight
+In this step we will create a visualization it using QuickSight
 
-Login to Amazon Quick Sight Console & complete the registration & sign-up
+Login to Amazon QuickSight Console and complete the registration and signup
 
 * GoTo: https://us-east-1.quicksight.aws.amazon.com/sn/start
-* You should see quicksight hompage: 
+* You should see quicksight dashboard: 
 ![
-](./img/quicksight_home_page.jpg)
+](./images/quicksight_home_page.jpg)
 
-## Setting QuickSight Permissions
+## Configure QuickSight Permissions
 
 * GoTo: https://us-east-1.quicksight.aws.amazon.com/sn/console/resources?#
 * Select: **Amazon Athena**  - this enables QuickSight access to Amazon Athena databases
@@ -352,10 +352,10 @@ Login to Amazon Quick Sight Console & complete the registration & sign-up
 * Click: **Update**
 
 ![
-](./img/qs_permissions_1.jpg)
+](./images/quicksight_permissions_1.jpg)
 
 ![
-](./img/qs_permissions_2.jpg)
+](./images/quicksight_permissions_2.jpg)
 
 
 ## Adding a New Dataset
@@ -379,11 +379,11 @@ Login to Amazon Quick Sight Console & complete the registration & sign-up
         * Click **Visualize**
 
 
-## Using Amazon Quick Sight to Visualize Our Processed Data
+## Using Amazon QuickSight to Visualize Our Processed Data
 
-###  Visualization 1: Heat map of users and tracks they are listening to
+###  Visualization 1: Heat map visualization type for users and tracks they are listening to
 
-In this step, we will create a visualization that show us which users are listening to repetitive tracks
+Here we will create a visualization that show which users are listening to repetitive tracks
 
 * On the bottom-left panel - **Visual types**
     * Hover on icon there to see names of the visualizations
@@ -396,7 +396,7 @@ In this step, we will create a visualization that show us which users are listen
 If you hover on dark blue patches on the heatmap you will see that those particular users are listening to same track repeatedly.
 
 
-### Visualization 2: Tree map of most played Artist Names
+### Visualization 2: Tree map visualization type for using the of most played by Artist Names
 
 In this step we will create a visualization that shows who are the host played artists
 
@@ -407,15 +407,15 @@ In this step we will create a visualization that shows who are the host played a
 * On top-left panel - **Fields list**
     * Click - **artist_name**
 
-Play around and explore Amazon QuickSight Console. Try out filters, other visualization types, etc.
+Play around and explore Amazon QuickSight Console. NOw try filtering, more options of visualization types, etc.
 
 
 
-# Clean Up
+# Deployment CleanUp
 
-Failing to do this will result in incuring AWS usage charges.
+Pay attention of failing to do this will result in incuring AWS usage charges.
 
-Make sure you bring down / delete all resources created as part of this lab
+Pleased make sure you bring down and deleting all resources created as part of this workshop
 
 ## Resources to delete
 * Kinesis Firehose Delivery Stream
@@ -453,4 +453,4 @@ Make sure you bring down / delete all resources created as part of this lab
 	* GoTo: https://us-west-2.console.aws.amazon.com/cognito/users/?region=us-west-2#/
 
 
-# aws-serverless-datalake
+# Thank You! :-)
