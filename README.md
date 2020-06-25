@@ -3,6 +3,7 @@ Author: Oshik Avioz | Chief Technology | Data & AI | AllCloud | [Linkedin](https
 
 ![Architecture Diagram](./img/lab-architecture.png)
 
+<<<<<<< HEAD
 ### What you will learn from this workshop?
 * How to design serverless data lake architecture
 * How to build a data processing pipeline and Data Lake using Amazon S3 for storing data
@@ -16,6 +17,21 @@ Author: Oshik Avioz | Chief Technology | Data & AI | AllCloud | [Linkedin](https
 * This workshop should be run in **us-east-1** region
 * I recommend to **follow links from this  guide** & open them **in new a tab**
 * You can run this workshop in Microsoft Edge or Google Chrome or Firefox
+=======
+### Learning outcomes from this workshop?
+* Design serverless data lake architecture
+* Build a data processing pipeline and Data Lake using Amazon S3 for storing data
+* Use Amazon Kinesis/MSK for real-time streaming data
+* Use AWS Glue to automatically catalog datasets
+* Run interactive ETL scripts in an Amazon SageMaker Jupyter notebook connected to an AWS Glue development endpoint
+* Query data using Amazon Athena & visualize it using Amazon QuickSight
+
+# Pre-requisites:  
+* You need to have access to an AWS account with **AdminstratorAccess**
+* This lab should be executed in **us-east-1** region
+* Best is to **follow links from this  guide** & open them **in new a tab**
+* Run this lab in a modern browser
+>>>>>>> fa5899577a8daf4554532a650ce16fb18ec00923
 
 # Part 1: Ingest and Storage
 
@@ -167,7 +183,11 @@ In this step we will navigate to IAM Console & create a new Glue service role, t
 
 
 
+<<<<<<< HEAD
 ## Create AWS Glue Crawlers 
+=======
+## Create AWS Glue Crawlers
+>>>>>>> fa5899577a8daf4554532a650ce16fb18ec00923
 
 In this step, we will navigate to AWS Glue Console & create glue crawlers to discovery the newly ingested data in S3.
 
